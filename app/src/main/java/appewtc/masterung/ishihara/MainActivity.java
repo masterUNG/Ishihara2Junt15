@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton,
             choice3RadioButton, choice4RadioButton;
     private Button answerButton;
-
+    private int radioAnInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
                 //Sound Effect
                 MediaPlayer radioPlayer = MediaPlayer.create(getBaseContext(), R.raw.effect_btn_shut);
                 radioPlayer.start();
+
+                //Setup radioAnInt
+                switch (i) {
+                    case R.id.radioButton:
+                        radioAnInt = 1;
+                        break;
+                    case R.id.radioButton2:
+                        radioAnInt = 2;
+                        break;
+                    case R.id.radioButton3:
+                        radioAnInt = 3;
+                        break;
+                    case R.id.radioButton4:
+                        radioAnInt = 4;
+                        break;
+                    default:
+                        radioAnInt = 0;
+                        break;
+                }   //switch
+
 
 
             }   // event
