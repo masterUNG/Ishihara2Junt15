@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void radioController() {
 
+        choiceRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                //Sound Effect
+                MediaPlayer radioPlayer = MediaPlayer.create(getBaseContext(), R.raw.effect_btn_shut);
+                radioPlayer.start();
+
+
+            }   // event
+        });
+
     }   // radioController
 
     private void buttonContorller() {
