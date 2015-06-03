@@ -34,8 +34,14 @@ public class MainActivity extends AppCompatActivity {
         //Button Controller
         buttonContorller();
 
+        //Radio Controller
+        radioController();
 
     }   // onCreate
+
+    private void radioController() {
+
+    }   // radioController
 
     private void buttonContorller() {
 
