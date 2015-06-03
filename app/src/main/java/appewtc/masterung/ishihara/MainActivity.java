@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             choice3RadioButton, choice4RadioButton;
     private Button answerButton;
     private int radioAnInt, indexAnInt;
+    private SsruModel objSsruModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,31 @@ public class MainActivity extends AppCompatActivity {
         //Radio Controller
         radioController();
 
+        //Receive Interface
+        receiveInterface();
+
     }   // onCreate
+
+    private void receiveInterface() {
+
+        objSsruModel = new SsruModel();
+        objSsruModel.setOnSsruModelChangeListener(new SsruModel.OnSsruModelChangeListener() {
+            @Override
+            public void onSsruModelChangeListener(SsruModel model) {
+
+                //Change View
+                changeView(model.getModelAnInt());
+
+            }   // event
+        });
+
+    }   // receiveInterface
+
+    private void changeView(int modelAnInt) {
+
+        
+
+    }   // changeView
 
     private void radioController() {
 
@@ -123,6 +148,10 @@ public class MainActivity extends AppCompatActivity {
 
             //Controller Call View
             questionTextView.setText(Integer.toString(indexAnInt+1) + ". What is this ?" );
+
+            //Controller Call Model
+            objSsruModel = new SsruModel();
+            objSsruModel.setModelAnInt(indexAnInt);
 
         }
 
