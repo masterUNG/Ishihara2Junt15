@@ -62,7 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeView(int modelAnInt) {
 
-        
+        //Change Image
+        int intDrawable[] = new int[]{R.drawable.ishihara_01, R.drawable.ishihara_02,
+                R.drawable.ishihara_03, R.drawable.ishihara_04, R.drawable.ishihara_05,
+                R.drawable.ishihara_06, R.drawable.ishihara_07, R.drawable.ishihara_08,
+                R.drawable.ishihara_09, R.drawable.ishihara_10};
+        ishiharaImageView.setImageResource(intDrawable[modelAnInt]);
 
     }   // changeView
 
@@ -150,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             questionTextView.setText(Integer.toString(indexAnInt+1) + ". What is this ?" );
 
             //Controller Call Model
-            objSsruModel = new SsruModel();
+
             objSsruModel.setModelAnInt(indexAnInt);
 
         }
