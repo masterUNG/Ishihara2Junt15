@@ -1,9 +1,12 @@
 package appewtc.masterung.ishihara;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class ShowScoreActivity extends AppCompatActivity {
 
@@ -11,6 +14,29 @@ public class ShowScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_score);
+
+        //Show Score
+        showScore();
+
+    }   // onCreate
+
+    public void clickPlay(View view) {
+        Intent objIntent = new Intent(ShowScoreActivity.this, MainActivity.class);
+        startActivity(objIntent);
+        finish();
+    }
+
+    public void clickExit(View view) {
+        finish();
+    }
+
+    private void showScore() {
+
+        //Receive Value From MainActivity
+        int intMyScore = getIntent().getExtras().getInt("Score");
+        TextView txtShowScore = (TextView) findViewById(R.id.txtShowScore);
+        txtShowScore.setText(Integer.toString(intMyScore) + "/10" );
+
     }
 
     @Override

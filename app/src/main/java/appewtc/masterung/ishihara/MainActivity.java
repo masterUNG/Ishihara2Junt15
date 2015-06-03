@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton,
             choice3RadioButton, choice4RadioButton;
     private Button answerButton;
-    private int radioAnInt, indexAnInt;
+    private int radioAnInt, indexAnInt, scoreAnInt;
     private SsruModel objSsruModel;
 
     @Override
@@ -68,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.ishihara_06, R.drawable.ishihara_07, R.drawable.ishihara_08,
                 R.drawable.ishihara_09, R.drawable.ishihara_10};
         ishiharaImageView.setImageResource(intDrawable[modelAnInt]);
+
+        //Change Choice
+        int intTimes[] = new int[]{R.array.times1, R.array.times2, R.array.times3,
+                R.array.times4, R.array.times5, R.array.times6, R.array.times7,
+                R.array.times8, R.array.times9, R.array.times10};
+        String strChoice[] = new String[4];
+        strChoice = getResources().getStringArray(intTimes[modelAnInt]);
+        choice1RadioButton.setText(strChoice[0]);
+        choice2RadioButton.setText(strChoice[1]);
+        choice3RadioButton.setText(strChoice[2]);
+        choice4RadioButton.setText(strChoice[3]);
 
     }   // changeView
 
@@ -131,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Please answer the Question", Toast.LENGTH_SHORT).show();
         } else {
 
+            //Check Score
+            checkScore();
+
+            choiceRadioGroup.clearCheck();
+
             //Check Times
             checkTimes();
 
@@ -138,12 +154,25 @@ public class MainActivity extends AppCompatActivity {
 
     }   // checkZero
 
+    private void checkScore() {
+
+        int intAnswer[] = new int[]{1, 2, 3, 1, 2, 3, 1, 2, 4, 4};
+        int intUser[] = new int[10];
+        intUser[indexAnInt] = radioAnInt;
+        if (intUser[indexAnInt] == intAnswer[indexAnInt]) {
+            scoreAnInt += 1;
+        }
+
+
+    }   // checkScore
+
     private void checkTimes() {
 
         if (indexAnInt == 9) {
 
             //Intent to ShowScore
             Intent objIntent = new Intent(MainActivity.this, ShowScoreActivity.class);
+            objIntent.putExtra("Score", scoreAnInt);
             startActivity(objIntent);
             finish();
 
